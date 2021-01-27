@@ -1,0 +1,13 @@
+<mapper namespace="com.lagou.mapper.UserMapper">
+
+    <select id="selectAll">
+        SELECT * FROM user
+    </select>
+
+    <select id="selectOne" parameterType="com.lagou.pojo.User" resultType="com.lagou.pojo.User">
+        SELECT * FROM user
+        WHERE
+        id = #{id}
+    </select>
+
+</mapper>
