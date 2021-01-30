@@ -1,7 +1,9 @@
 package com.lagou.mapper;
 
 import com.lagou.pojo.User;
+import org.dom4j.DocumentException;
 
+import java.beans.PropertyVetoException;
 import java.util.List;
 
 /**
@@ -10,8 +12,8 @@ import java.util.List;
  */
 public interface UserMapper {
 
-    List<User> selectAll(User user);
+    List<User> selectAll(User user) throws DocumentException, PropertyVetoException, ClassNotFoundException;
 
-    User selectOne(User user);
+    User selectOne(User user) throws DocumentException, PropertyVetoException, ClassNotFoundException;
 
 }

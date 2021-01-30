@@ -49,21 +49,26 @@ class UserMapperTest {
     }
 
     @Test
-    void selectAll() {
+    void selectAll() throws DocumentException, PropertyVetoException, ClassNotFoundException {
 
-        List<Object> list = sqlSession.selectList("com.lagou.mapper.UserMapper.selectAll");
+//        List<Object> list = sqlSession.selectList("com.lagou.mapper.UserMapper.selectAll");
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> list = mapper.selectAll(null);
 
         System.out.println(list);
 
     }
 
     @Test
-    void selectOne() {
+    void selectOne() throws DocumentException, PropertyVetoException, ClassNotFoundException {
 
-        User user = new User();
-        user.setId(0L);
-        Object o = sqlSession.selectOne("com.lagou.mapper.UserMapper.selectOne", user);
-        System.out.println(o);
+        User userParam = new User();
+        userParam.setId(1L);
+//        Object o = sqlSession.selectOne("com.lagou.mapper.UserMapper.selectOne", user);
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = mapper.selectOne(userParam);
+        System.out.println(user);
 
     }
 }
