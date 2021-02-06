@@ -10,4 +10,18 @@
         id = #{id}
     </select>
 
+    <insert id="insert" parameterType="com.lagou.pojo.User" resultType="java.lang.Integer">
+        INSERT INTO user(name) values (#{name})
+    </insert>
+
+    <delete id="delete" parameterType="com.lagou.pojo.User" resultType="java.lang.Integer">
+        DELETE FROM user
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.lagou.pojo.User" resultType="java.lang.Integer">
+        UPDATE user
+        SET name = #{name}
+        WHERE id = #{id}
+    </update>
 </mapper>

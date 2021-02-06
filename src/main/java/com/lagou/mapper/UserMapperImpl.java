@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class UserMapperImpl implements UserMapper {
     @Override
-    public List<User> selectAll(User user) throws DocumentException, PropertyVetoException, ClassNotFoundException {
+    public List<User> selectAll() throws DocumentException, PropertyVetoException, ClassNotFoundException {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         Configuration configuration = new XmlConfigBuilder().parseConfig(resourceAsStream);
         SqlSessionFactory sqlSessionFactory = new DefaultSqlSessionFactory(configuration);
@@ -36,5 +36,20 @@ public class UserMapperImpl implements UserMapper {
         SqlSession sqlSession = sqlSessionFactory.openSqlSession();
 
         return sqlSession.selectOne("com.lagou.mapper.UserMapper.selectOne", user);
+    }
+
+    @Override
+    public Integer insert(User user) {
+        return null;
+    }
+
+    @Override
+    public Integer delete(User user) {
+        return null;
+    }
+
+    @Override
+    public Integer update(User user) {
+        return null;
     }
 }

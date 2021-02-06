@@ -12,8 +12,13 @@ import java.util.List;
  */
 public interface UserMapper {
 
-    List<User> selectAll(User user) throws DocumentException, PropertyVetoException, ClassNotFoundException;
+    List<User> selectAll() throws DocumentException, PropertyVetoException, ClassNotFoundException;
 
     User selectOne(User user) throws DocumentException, PropertyVetoException, ClassNotFoundException;
 
+    Integer insert(User user);
+
+    Integer delete(User user);
+
+    Integer update(User user);
 }

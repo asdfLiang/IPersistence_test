@@ -15,8 +15,6 @@ import java.beans.PropertyVetoException;
 import java.io.InputStream;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @author liangzj
  * @date 2021/1/24 19:09
@@ -53,7 +51,7 @@ class UserMapperTest {
 
 //        List<Object> list = sqlSession.selectList("com.lagou.mapper.UserMapper.selectAll");
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        List<User> list = mapper.selectAll(null);
+        List<User> list = mapper.selectAll();
 
         System.out.println(list);
 
@@ -71,4 +69,46 @@ class UserMapperTest {
         System.out.println(user);
 
     }
+
+    @Test
+    void testInsert() throws DocumentException, PropertyVetoException, ClassNotFoundException {
+        User user = new User();
+        user.setName("ZXCC");
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        System.out.println(mapper.selectAll());
+        System.out.println(mapper.insert(user));
+        System.out.println(mapper.selectAll());
+
+    }
+
+    @Test
+    void testDelete() throws DocumentException, PropertyVetoException, ClassNotFoundException {
+        User user = new User();
+        user.setId(5L);
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        System.out.println(mapper.selectAll());
+        System.out.println(mapper.delete(user));
+        System.out.println(mapper.selectAll());
+
+    }
+
+    @Test
+    void testUpdate() throws DocumentException, PropertyVetoException, ClassNotFoundException {
+        User user = new User();
+        user.setId(7L);
+        user.setName("qwerqwe");
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        System.out.println(mapper.selectAll());
+        System.out.println(mapper.update(user));
+        System.out.println(mapper.selectAll());
+
+    }
+
+
 }
